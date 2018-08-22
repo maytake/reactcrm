@@ -2,11 +2,11 @@ import React from 'react'
 import { Steps, Icon } from 'antd';
 const Step = Steps.Step;
 
-class Home extends React.Component {
+class King extends React.Component {
 
     render() {
         return (
-        <Steps>
+            <Steps>
             <Step status="finish" title="Login" icon={<Icon type="user" />} />
             <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
             <Step status="process" title="Pay" icon={<Icon type="loading" />} />
@@ -17,4 +17,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+export default King

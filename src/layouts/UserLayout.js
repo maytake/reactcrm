@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import {Link, Route, Redirect,Switch } from 'react-router-dom'
+import {Link, Route,Switch } from 'react-router-dom'
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
-import Home from '../pages/Home'
+import Login from '../pages/Login/Login'
 import styles from './UserLayout.less';
 import logo from '../assets/logo.svg';
-import { getRoutes, getPageQuery, getQueryPath } from '../utils/utils';
+import { getPageQuery, getQueryPath } from '../utils/utils';
 
 const links = [
   {
@@ -28,7 +28,7 @@ const links = [
 
 const copyright = (
   <Fragment>
-    Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
+    Copyright <Icon type="copyright" /> 2018 乐橙电子商务技术部出品
   </Fragment>
 );
 
@@ -42,9 +42,7 @@ function getLoginPathWithRedirectPath() {
 
 class UserLayout extends React.PureComponent {
 
-
   render() {
-   
     return (
       <DocumentTitle title={'Ant Design Pro'}>
         <div className={styles.container}>
@@ -56,12 +54,9 @@ class UserLayout extends React.PureComponent {
                   <span className={styles.title}>Ant Design</span>
                 </Link>
               </div>
-              <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+              <div className={styles.desc}>盈众统一会员管理系统 </div>
             </div>
-            <Switch>
-              <Route path='/home' component={Home}></Route>
-              
-            </Switch>
+            <Login/>
           </div>
           <GlobalFooter links={links} copyright={copyright} />
         </div>
