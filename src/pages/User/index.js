@@ -34,7 +34,7 @@ class User extends React.Component {
     render() {
         return (
             <div>
-              <span className="icon icon-taobao" />
+             
               <Pagination simple defaultCurrent={2} total={50} />
                <Cascader options={options} onChange={onChange} placeholder="Please select" />
                <Switch>

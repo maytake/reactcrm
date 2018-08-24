@@ -5,7 +5,7 @@ import { Icon } from 'antd';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import Login from '../pages/Login/Login'
 import styles from './UserLayout.less';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
 import { getPageQuery, getQueryPath } from '../utils/utils';
 
 const links = [
@@ -51,7 +51,7 @@ class UserLayout extends React.PureComponent {
               <div className={styles.header}>
                 <Link to="/">
                   <img alt="logo" className={styles.logo} src={logo} />
-                  <span className={styles.title}>Ant Design</span>
+                  <span className={styles.title}>ENJOY AUTO</span>
                 </Link>
               </div>
               <div className={styles.desc}>盈众统一会员管理系统 </div>

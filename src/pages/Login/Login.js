@@ -62,13 +62,7 @@ class LoginPage extends React.Component {
           </div>
           </div>
           <Submit loading={this.state.submitting}>登录</Submit>
-          <div>
-            Other login methods
-            <span className="icon icon-alipay" />
-            <span className="icon icon-taobao" />
-            <span className="icon icon-weibo" />
-            <a style={{ float: 'right' }} href="">Register</a>
-          </div>
+   
         </Login>
       </div>
     );
