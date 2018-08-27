@@ -1,23 +1,26 @@
 
 
-const USER_LIST = 'USER_LIST'
+const COLLAPSED = 'COLLAPSED'
 
 const initState = {
-	userlist:[]
+	collapsed: false,
+	
 }
 
-export default function CRM(state=initState, action){
+export  function CRM(state=initState, action){
 	switch(action.type){
-		case USER_LIST:
-			return {...state, userlist:action.payload}
+		case COLLAPSED:
+			return {...state, collapsed:action.payload}
 		default:
 			return state
 	}
 }
 
-function userList(data){
-	return { type:USER_LIST, payload:data}
+export function changeLayoutCollapsed(data){
+	return { 
+		type:COLLAPSED, 
+		payload:data
+	}
 }
-
 
 

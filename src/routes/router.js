@@ -22,8 +22,7 @@ export default class ERouter extends React.Component{
         return (
             <BrowserRouter>
                 <div>
-                    <Switch>
-                     
+                    <Switch>             
                         <Route path="/login" exact component={UserLayout} />
                         <Route path='/home' component={Dashboard}/>
                         <Route path="/" render={props => LayoutRouter}/>
