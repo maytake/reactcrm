@@ -1,7 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
-import { routerRedux } from 'dva/router';
-import store from '../index';
+import {withRouter} from 'react-router-dom';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -42,7 +41,7 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
+ function request(url, options) {
   const defaultOptions = {
     credentials: 'include',
   };
@@ -77,24 +76,24 @@ export default function request(url, options) {
       return response.json();
     })
     .catch(e => {
-      const { dispatch } = store;
+      
       const status = e.name;
       if (status === 401) {
-        dispatch({
-          type: 'login/logout',
-        });
+        this.props.history.push('/login');
         return;
       }
       if (status === 403) {
-        dispatch(routerRedux.push('/exception/403'));
+        this.props.history.push('/exception/403');
         return;
       }
       if (status <= 504 && status >= 500) {
-        dispatch(routerRedux.push('/exception/500'));
+        this.props.history.push('/exception/500');
         return;
       }
       if (status >= 404 && status < 422) {
-        dispatch(routerRedux.push('/exception/404'));
+        this.props.history.push('/exception/403');
       }
     });
 }
+
+export default withRouter(request)

@@ -5,6 +5,9 @@ import UserLayout from '../layouts/UserLayout.js';
 import User from '../pages/User';
 import Admin from '../admin';
 import Dashboard from '../pages';
+import E403 from '../pages/Exception/403';
+import E404 from '../pages/Exception/403';
+import E500 from '../pages/Exception/403';
 
 export default class ERouter extends React.Component{
 
@@ -14,6 +17,9 @@ export default class ERouter extends React.Component{
             <Admin>
                 <Switch>
                     <Route path='/user' component={User} />
+                    <Route path='/exception/403' component={E403} />
+                    <Route path='/exception/404' component={E404} />
+                    <Route path='/exception/500' component={E500} />
                     <Redirect to="/home" />
                 </Switch>
             </Admin>
@@ -22,8 +28,7 @@ export default class ERouter extends React.Component{
         return (
             <BrowserRouter>
                 <div>
-                    <Switch>
-                     
+                    <Switch>             
                         <Route path="/login" exact component={UserLayout} />
                         <Route path='/home' component={Dashboard}/>
                         <Route path="/" render={props => LayoutRouter}/>

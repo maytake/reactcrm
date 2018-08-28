@@ -1,9 +1,10 @@
 import React from 'react'
-import { Row,Col } from 'antd';
-
+import {Layout, Icon, message, Row,Col } from 'antd';
 import { connect } from 'react-redux'
+import SiderMenu from 'components/SiderMenu';
+import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
-import { Icon } from 'antd';
+const { Content, Header, Footer } = Layout;
 
 const links = [{
     key: '帮助',
@@ -20,25 +21,27 @@ const links = [{
     href: '',
     blankTarget: true,
   }];
-  const copyright = <div>Copyright <Icon type="copyright" /> 2017 蚂蚁金服体验技术部出品</div>;
+  const copyright = <div>Copyright <Icon type="copyright" /> 2018 厦门盈众集团出品</div>;
 
 
 class Admin extends React.Component{
 
     render(){
         return (
-            <Row className="container">
-                <Col span="4" className="nav-left">
-                    <div>菜单</div>
-                </Col>
-                <Col span="20" className="main">
-                    
-                    <Row className="content">
-                        {this.props.children}
-                    </Row>
-                    <GlobalFooter links={links} copyright={copyright} />
-                </Col>
-            </Row>
+            <Layout>
+                <SiderMenu/>
+                <Layout>
+                    <Header style={{ padding: 0 }}>
+                        <GlobalHeader/>
+                    </Header>
+                    <Content style={{ margin: '24px 24px 0', height: '100%' }}>
+                            {this.props.children}
+                    </Content>   
+                    <Footer style={{ padding: 0 }}>
+                        <GlobalFooter links={links} copyright={copyright} />
+                    </Footer>
+                </Layout>
+           </Layout>   
         );
     }
 }
