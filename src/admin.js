@@ -1,8 +1,8 @@
 import React from 'react'
 import {Layout, Icon, message, Row,Col } from 'antd';
 import { connect } from 'react-redux'
-import SiderMenu from './components/SiderMenu';
-import GlobalHeader from './components/GlobalHeader';
+import SiderMenu from 'components/SiderMenu';
+import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 const { Content, Header, Footer } = Layout;
 

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import {withRouter} from 'react-router-dom';
 import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip } from 'antd';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
@@ -11,15 +12,15 @@ import {changeLayoutCollapsed} from '../../reducers/CRM/CRM';
 
 import styles from './index.less';
 
-@connect(
-	state=>state.collapsed,
-	{changeLayoutCollapsed}
+@withRouter
+@connect(state => ({
+    collapsed:state.CRM.collapsed,
+  }),
+  {changeLayoutCollapsed}
 )
 
 
-
-
-export default class GlobalHeader extends PureComponent {
+class GlobalHeader extends PureComponent {
   componentWillUnmount() {
     this.triggerResizeEvent.cancel();
   }
@@ -68,9 +69,20 @@ export default class GlobalHeader extends PureComponent {
     event.initEvent('resize', true, false);
     window.dispatchEvent(event);
   }
+  onMenuClick = ({ key }) => {
+    if (key === 'triggerError') {
+      this.props.history.push('/register')
+      return;
+    }
+    if (key === 'logout') {
+      this.props.history.push('/login')
+    }
+  };
+
+
   render() {
     const {
-      currentUser = {},
+   
       collapsed,
       fetchingNotices,
       isMobile,
@@ -79,8 +91,15 @@ export default class GlobalHeader extends PureComponent {
       onMenuClick,
       onNoticeClear,
     } = this.props;
+
+    const currentUser= {
+      name: 'Serati Ma',
+      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+      userid: '00000001',
+      notifyCount: 12,
+    }
     const menu = (
-      <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
+      <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
         <Menu.Item disabled>
           <Icon type="user" />个人中心
         </Menu.Item>
@@ -177,3 +196,5 @@ export default class GlobalHeader extends PureComponent {
     );
   }
 }
+
+export default GlobalHeader;

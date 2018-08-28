@@ -11,36 +11,29 @@ const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 @connect(
-	state=>{return {
-        sk:state.CRM.collapsed
-    }},
+	state=>{
+        return {
+            collapsed:state.CRM.collapsed
+        }
+    },
 	{changeLayoutCollapsed}
 )
 
 class SiderMenu extends React.Component {
-  state = {
-    collapsed: false,
-  }
 
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-    this.props.changeLayoutCollapsed(this.state.collapsed);
-  }
-  componentDidMount() {
-    console.log(this.props.state)
-  }
-  
+
   render() {
+    const { collapsed } = this.props;
     return (
         <Sider 
         trigger={null}
         collapsible
         breakpoint="lg"
+        collapsed={collapsed}
         width={256}
         className={styles.sider}
         >
+            <div>{this.props.collapsed?'true':'false'}</div>    
             <div className={styles.logo} key="logo">
             <Link to="/">
                 <img src={logo} alt="logo" />
@@ -52,7 +45,7 @@ class SiderMenu extends React.Component {
             defaultOpenKeys={['sub1']}
             mode="inline"
             theme="dark"
-            inlineCollapsed={this.state.collapsed}
+            inlineCollapsed={this.props.collapsed}
             >
             <Menu.Item key="1">
                 <Icon type="pie-chart" />
