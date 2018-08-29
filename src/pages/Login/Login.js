@@ -2,6 +2,8 @@ import React from 'react';
 import Login from 'ant-design-pro/lib/Login';
 import styles from './Login.less';
 import { Alert, Checkbox } from 'antd';
+import {loginIn} from '../../services/api';
+
 
 const {  UserName, Password, Submit } = Login;
 
@@ -12,19 +14,21 @@ class LoginPage extends React.Component {
     autoLogin: true,
   }
   onSubmit = (err, values) => {
-    console.log('value collected ->', { ...values, autoLogin: this.state.autoLogin });
+    //console.log('value collected ->', { ...values, autoLogin: this.state.autoLogin });
     this.setState({
-      submitting:true,
+      submitting:false,
       notice: '',
     }, () => {
       if (!err && (values.username !== 'admin' || values.password !== '888888')) {
-        setTimeout(() => {
+        loginIn().then((data)=>{
+          console.log(data)
           this.setState({
             submitting:false,
             notice: '账户或密码错误!',
           });
-        }, 500);
+        })
       }
+
     });
     
   }

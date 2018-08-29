@@ -1,6 +1,8 @@
-import fetch from 'dva/fetch';
+
 import { notification } from 'antd';
 import {withRouter} from 'react-router-dom';
+import createHistory from "history/createBrowserHistory"
+const history = createHistory()
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -79,21 +81,21 @@ function checkStatus(response) {
       
       const status = e.name;
       if (status === 401) {
-        this.props.history.push('/login');
+        history.push('/login');
         return;
       }
       if (status === 403) {
-        this.props.history.push('/exception/403');
+        history.push('/exception/403');
         return;
       }
       if (status <= 504 && status >= 500) {
-        this.props.history.push('/exception/500');
+        history.push('/exception/500');
         return;
       }
       if (status >= 404 && status < 422) {
-        this.props.history.push('/exception/403');
+        history.push('/exception/403');
       }
     });
 }
 
-export default withRouter(request)
+export default request
