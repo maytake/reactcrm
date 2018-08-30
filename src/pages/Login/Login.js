@@ -1,35 +1,50 @@
-import React from 'react';
+import React from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import {withRouter} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
+import { connect } from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux';
 import Login from 'ant-design-pro/lib/Login';
 import styles from './Login.less';
 import { Alert, Checkbox } from 'antd';
 import {loginIn} from '../../services/api';
-
+import {saveCurrentUser} from '../../reducers/CRM/user';
 
 const {  UserName, Password, Submit } = Login;
+@withRouter
+@connect(state => ({
+  currentUser:state.user,
+}),
+{saveCurrentUser}
+)
 
 class LoginPage extends React.Component {
   state = {
-    notice: '',
     submitting: false,
+    notice:'',
     autoLogin: true,
   }
+  componentDidMount(){
+    console.log(this.props)
+  }
   onSubmit = (err, values) => {
-    //console.log('value collected ->', { ...values, autoLogin: this.state.autoLogin });
-    this.setState({
-      submitting:false,
-      notice: '',
-    }, () => {
-      if (!err && (values.username !== 'admin' || values.password !== '888888')) {
-        loginIn().then((data)=>{
-          console.log(data)
+    console.log(this.props)
+    let params ={ ...values, autoLogin: this.state.autoLogin };
+    if (!err) {
+      this.setState({
+        submitting:true
+      });
+      loginIn(params).then((data)=>{
+        this.setState({
+          submitting:false
+        });
+        if(data.resultId===1){
+          this.props.history.push('/user');
+          this.props.saveCurrentUser(data.resultData);
+        }else{
           this.setState({
-            submitting:false,
-            notice: '账户或密码错误!',
-          });
-        })
-      }
-
-    });
+            notice:'用户名或者密码错误'
+          }) 
+        }
+      })
+    }
     
   }
 

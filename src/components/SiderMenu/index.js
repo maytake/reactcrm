@@ -4,18 +4,16 @@ import styles from './index.less';
 import {Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import {connect} from 'react-redux';
-import {changeLayoutCollapsed} from '../../reducers/CRM/CRM';
+import {changeLayoutCollapsed} from '../../reducers/CRM/global';
 
 
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 @connect(
-	state=>{
-        return {
-            collapsed:state.CRM.collapsed
-        }
-    },
+	state=>({
+            collapsed:state.reducerCollapsed.collapsed
+        }),
 	{changeLayoutCollapsed}
 )
 

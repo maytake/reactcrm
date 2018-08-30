@@ -25,7 +25,7 @@ export default class ERouter extends React.Component{
             )
 
         return (
-            <BrowserRouter history={createHistory}>
+            <BrowserRouter>
                 <div>
                     <Switch>             
                         <Route path="/login" exact component={UserLayout} />

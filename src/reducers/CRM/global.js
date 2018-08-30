@@ -1,13 +1,9 @@
-
-
 const COLLAPSED = 'COLLAPSED'
-
 const initState = {
 	collapsed: false,
-	
 }
 
-export  function CRM(state=initState, action){
+export  function reducerCollapsed(state=initState, action){
 	switch(action.type){
 		case COLLAPSED:
 			return {...state, collapsed:action.payload}

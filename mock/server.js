@@ -12,7 +12,14 @@ var loginData = require('./login/index.js');
 router.post('/CRM/editpwd/formLogin', async (ctx, next) => {
     ctx.body = loginData;
     let {password, username} = ctx.request.body;
-    console.log(username);
+    if ( username !== 'admin' || password !== '888888') {
+        ctx.body ={
+            "resultId": 2,
+            "resultMsg": "账户或密码错误",
+        }
+    }else{
+        ctx.body =loginData
+    }
 });
 
 

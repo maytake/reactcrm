@@ -1,20 +1,20 @@
-import React, { PureComponent } from 'react';
-import {withRouter} from 'react-router-dom';
+import React, { PureComponent } from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import {withRouter} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
 import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip } from 'antd';
-import moment from 'moment';
-import groupBy from 'lodash/groupBy';
+import moment from '../../../node_modules/_moment@2.22.2@moment';
+import groupBy from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/lodash/groupBy';
 import Debounce from 'lodash-decorators/debounce';
-import { Link } from  'react-router-dom';
+import { Link } from  'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
 import NoticeIcon from 'ant-design-pro/lib/NoticeIcon';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import {connect} from 'react-redux';
-import {changeLayoutCollapsed} from '../../reducers/CRM/CRM';
+import {connect} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux';
+import {changeLayoutCollapsed} from '../../reducers/CRM/global';
 
 import styles from './index.less';
 
 @withRouter
 @connect(state => ({
-    collapsed:state.CRM.collapsed,
+    collapsed:state.reducerCollapsed.collapsed,
   }),
   {changeLayoutCollapsed}
 )

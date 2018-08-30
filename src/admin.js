@@ -1,6 +1,6 @@
 import React from 'react'
-import {Layout, Icon, message, Row,Col } from 'antd';
-import { connect } from 'react-redux'
+import {Layout, Icon} from 'antd';
+import { connect } from 'react-redux';
 import SiderMenu from 'components/SiderMenu';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
