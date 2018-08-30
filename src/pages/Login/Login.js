@@ -1,6 +1,6 @@
-import React from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import {withRouter} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
-import { connect } from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux';
+import React from 'react';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 import Login from 'ant-design-pro/lib/Login';
 import styles from './Login.less';
 import { Alert, Checkbox } from 'antd';

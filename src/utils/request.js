@@ -1,7 +1,7 @@
 
 import { notification } from 'antd';
-import {withRouter} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
-import createHistory from "C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/history/createBrowserHistory"
+import {withRouter} from 'react-router-dom';
+import createHistory from "history/createBrowserHistory"
 const history = createHistory()
 
 const codeMessage = {

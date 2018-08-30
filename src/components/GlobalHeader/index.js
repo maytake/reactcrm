@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import {withRouter} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
+import React, { PureComponent } from 'react';
+import {withRouter} from 'react-router-dom';
 import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip } from 'antd';
 import moment from '../../../node_modules/_moment@2.22.2@moment';
-import groupBy from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/lodash/groupBy';
+import groupBy from 'lodash/groupBy';
 import Debounce from 'lodash-decorators/debounce';
-import { Link } from  'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
+import { Link } from  'react-router-dom';
 import NoticeIcon from 'ant-design-pro/lib/NoticeIcon';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import {connect} from 'C:/Users/Administrator/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-redux';
+import {connect} from 'react-redux';
 import {changeLayoutCollapsed} from '../../reducers/CRM/global';
 
 import styles from './index.less';
