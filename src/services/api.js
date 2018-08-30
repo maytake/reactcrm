@@ -5,11 +5,17 @@ export async function loginIn(params) {
       method: 'POST',
       body:params,
     });
-  }
+  };
 
   export async function getCurrentUser(params) {
     return request('/CRM/currentUser', {
       method: 'POST',
       body:params,
     });
-  }
+  };
+  export async function getMenu(params) {
+    return request('/CRM/menu', {
+      method: 'POST',
+      body:params,
+    });
+  };

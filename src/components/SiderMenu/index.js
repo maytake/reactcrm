@@ -4,7 +4,6 @@ import styles from './index.less';
 import {Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import {connect} from 'react-redux';
-import {changeLayoutCollapsed} from '../../reducers/CRM/global';
 
 
 const { Sider } = Layout;
@@ -12,9 +11,9 @@ const SubMenu = Menu.SubMenu;
 
 @connect(
 	state=>({
-            collapsed:state.reducerCollapsed.collapsed
-        }),
-	{changeLayoutCollapsed}
+            collapsed:state.reducerCollapsed.collapsed,
+            menuData:state.reducerMenu.menu.menuData
+        })
 )
 
 class SiderMenu extends React.Component {

@@ -8,7 +8,7 @@ var router = new Router();
 
 var loginData = require('./login/index.js');
 var currentUser = require('./currentUser/currentUser.js');
-
+var menu = require('./CRM/menu.js');
 
 router.post('/CRM/editpwd/formLogin', async (ctx, next) => {
     let {password, username} = ctx.request.body;
@@ -22,7 +22,10 @@ router.post('/CRM/editpwd/formLogin', async (ctx, next) => {
     }
 }).post('/CRM/currentUser', async (ctx, next) => {
     ctx.body = currentUser;
+}).post('/CRM/menu', async (ctx, next) => {
+    ctx.body = menu;
 });
+
 
 
 

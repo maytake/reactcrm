@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react';
 import {withRouter} from 'react-router-dom';
 import { Menu, Icon, Spin, Tag, Dropdown, Avatar, Divider, Tooltip } from 'antd';
-import moment from '../../../node_modules/_moment@2.22.2@moment';
+import moment from 'moment';
 import groupBy from 'lodash/groupBy';
 import Debounce from 'lodash-decorators/debounce';
 import { Link } from  'react-router-dom';
 import NoticeIcon from 'ant-design-pro/lib/NoticeIcon';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import {connect} from 'react-redux';
-
+import {changeLayoutCollapsed} from '../../reducers/CRM/global';
 
 import styles from './index.less';
 
@@ -16,7 +16,8 @@ import styles from './index.less';
 @connect(state => ({
     collapsed:state.reducerCollapsed.collapsed,
     currentUser:state.reducerCurrentUser.currentUser,
-  })
+  }),
+  {changeLayoutCollapsed }
  
 )
 

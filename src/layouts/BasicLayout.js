@@ -5,7 +5,7 @@ import SiderMenu from 'components/SiderMenu';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import {saveCurrentUser} from '../reducers/CRM/user';
-
+import {getMenuData} from '../reducers/CRM/menu';
 
 
 
@@ -30,11 +30,12 @@ const links = [{
 @connect(state => ({
     currentUser:state.reducerCurrentUser.currentUser,
   }),
-  {saveCurrentUser}
+  {saveCurrentUser,getMenuData}
 )
 class Admin extends React.Component{
     componentDidMount() {
-        this.props.saveCurrentUser()
+        this.props.saveCurrentUser();
+        this.props.getMenuData();
     }
     render(){
         return (
