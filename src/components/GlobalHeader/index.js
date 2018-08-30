@@ -8,15 +8,16 @@ import { Link } from  'react-router-dom';
 import NoticeIcon from 'ant-design-pro/lib/NoticeIcon';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import {connect} from 'react-redux';
-import {changeLayoutCollapsed} from '../../reducers/CRM/global';
+
 
 import styles from './index.less';
 
 @withRouter
 @connect(state => ({
     collapsed:state.reducerCollapsed.collapsed,
-  }),
-  {changeLayoutCollapsed}
+    currentUser:state.reducerCurrentUser.currentUser,
+  })
+ 
 )
 
 
@@ -82,7 +83,7 @@ class GlobalHeader extends PureComponent {
 
   render() {
     const {
-   
+      currentUser = {},
       collapsed,
       fetchingNotices,
       isMobile,
@@ -91,13 +92,10 @@ class GlobalHeader extends PureComponent {
       onMenuClick,
       onNoticeClear,
     } = this.props;
-
-    const currentUser= {
-      name: 'Serati Ma',
-      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-      userid: '00000001',
-      notifyCount: 12,
+    if(Object.keys(currentUser).length===0){
+      return false;
     }
+ 
     const menu = (
       <Menu className={styles.menu} selectedKeys={[]} onClick={this.onMenuClick}>
         <Menu.Item disabled>

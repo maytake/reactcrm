@@ -1,31 +1,21 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import { connect } from 'react-redux';
 import Login from 'ant-design-pro/lib/Login';
 import styles from './Login.less';
 import { Alert, Checkbox } from 'antd';
 import {loginIn} from '../../services/api';
-import {saveCurrentUser} from '../../reducers/CRM/user';
 
-const {  UserName, Password, Submit } = Login;
+const { UserName, Password, Submit } = Login;
 @withRouter
-@connect(state => ({
-  currentUser:state.user,
-}),
-{saveCurrentUser}
-)
-
 class LoginPage extends React.Component {
   state = {
     submitting: false,
     notice:'',
     autoLogin: true,
   }
-  componentDidMount(){
-    console.log(this.props)
-  }
+ 
   onSubmit = (err, values) => {
-    console.log(this.props)
+    
     let params ={ ...values, autoLogin: this.state.autoLogin };
     if (!err) {
       this.setState({
@@ -37,7 +27,6 @@ class LoginPage extends React.Component {
         });
         if(data.resultId===1){
           this.props.history.push('/user');
-          this.props.saveCurrentUser(data.resultData);
         }else{
           this.setState({
             notice:'用户名或者密码错误'

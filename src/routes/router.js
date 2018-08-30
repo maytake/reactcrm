@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Redirect,Switch } from 'react-router-dom';
 import UserLayout from '../layouts/UserLayout.js';
 import createHistory from "history/createBrowserHistory"
 import User from '../pages/User';
-import Admin from '../admin';
+import Admin from '../layouts/BasicLayout';
 import Dashboard from '../pages';
 import E403 from '../pages/Exception/403';
 import E404 from '../pages/Exception/404';

@@ -6,3 +6,10 @@ export async function loginIn(params) {
       body:params,
     });
   }
+
+  export async function getCurrentUser(params) {
+    return request('/CRM/currentUser', {
+      method: 'POST',
+      body:params,
+    });
+  }

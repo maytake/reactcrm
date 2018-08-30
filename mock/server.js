@@ -7,10 +7,10 @@ var router = new Router();
 
 
 var loginData = require('./login/index.js');
+var currentUser = require('./currentUser/currentUser.js');
 
 
 router.post('/CRM/editpwd/formLogin', async (ctx, next) => {
-    ctx.body = loginData;
     let {password, username} = ctx.request.body;
     if ( username !== 'admin' || password !== '888888') {
         ctx.body ={
@@ -20,6 +20,8 @@ router.post('/CRM/editpwd/formLogin', async (ctx, next) => {
     }else{
         ctx.body =loginData
     }
+}).post('/CRM/currentUser', async (ctx, next) => {
+    ctx.body = currentUser;
 });
 
 
