@@ -5,6 +5,8 @@ import styles from './Login.less';
 import { Alert, Checkbox } from 'antd';
 import {loginIn} from '../../services/api';
 
+
+const USER_TOKEN = 'USER_TOKEN';
 const { UserName, Password, Submit } = Login;
 @withRouter
 class LoginPage extends React.Component {
@@ -13,6 +15,13 @@ class LoginPage extends React.Component {
     notice:'',
     autoLogin: true,
   }
+
+  componentDidMount() {
+    if (localStorage.getItem(USER_TOKEN)){
+      this.props.history.push('/user');
+    }
+  }
+  
  
   onSubmit = (err, values) => {
     
@@ -25,7 +34,8 @@ class LoginPage extends React.Component {
         this.setState({
           submitting:false
         });
-        if(data.resultId===1){
+        if(data.resultCode===0){
+          localStorage.setItem(USER_TOKEN,data.resultData)
           this.props.history.push('/user');
         }else{
           this.setState({

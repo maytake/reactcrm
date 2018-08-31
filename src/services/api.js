@@ -6,6 +6,12 @@ export async function loginIn(params) {
       body:params,
     });
   };
+  export async function loginOut(params) {
+    return request('/CRM/loginOut', {
+      method: 'POST',
+      body:params,
+    });
+  };
 
   export async function getCurrentUser(params) {
     return request('/CRM/currentUser', {

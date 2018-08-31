@@ -1,6 +1,7 @@
 import React from 'react'
 import {Layout, Icon} from 'antd';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import SiderMenu from 'components/SiderMenu';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
@@ -8,7 +9,7 @@ import {saveCurrentUser} from '../reducers/CRM/user';
 import {getMenuData} from '../reducers/CRM/menu';
 
 
-
+const USER_TOKEN = 'USER_TOKEN';
 const { Content, Header, Footer } = Layout;
 const links = [{
     key: '帮助',
@@ -27,6 +28,7 @@ const links = [{
   }];
   const copyright = <div>Copyright <Icon type="copyright" /> 2018 厦门盈众集团出品</div>;
 
+@withRouter
 @connect(state => ({
     currentUser:state.reducerCurrentUser.currentUser,
   }),
@@ -34,6 +36,11 @@ const links = [{
 )
 class Admin extends React.Component{
     componentDidMount() {
+
+        if (!localStorage.getItem(USER_TOKEN)){
+            this.props.history.push('/login');
+        }
+ 
         this.props.saveCurrentUser();
         this.props.getMenuData();
     }

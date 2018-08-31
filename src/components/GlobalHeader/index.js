@@ -9,9 +9,13 @@ import NoticeIcon from 'ant-design-pro/lib/NoticeIcon';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import {connect} from 'react-redux';
 import {changeLayoutCollapsed} from '../../reducers/CRM/global';
+import {loginOut} from '../../services/api'
+
 
 import styles from './index.less';
 
+
+const USER_TOKEN = 'USER_TOKEN';
 @withRouter
 @connect(state => ({
     collapsed:state.reducerCollapsed.collapsed,
@@ -20,8 +24,6 @@ import styles from './index.less';
   {changeLayoutCollapsed }
  
 )
-
-
 class GlobalHeader extends PureComponent {
   componentWillUnmount() {
     this.triggerResizeEvent.cancel();
@@ -77,7 +79,12 @@ class GlobalHeader extends PureComponent {
       return;
     }
     if (key === 'logout') {
-      this.props.history.push('/login')
+
+      loginOut().then(res=>{
+        localStorage.setItem(USER_TOKEN,'');
+        this.props.history.push('/login')
+      })
+
     }
   };
 
