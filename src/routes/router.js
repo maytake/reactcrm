@@ -19,7 +19,7 @@ export default class ERouter extends React.Component{
                     <Route path='/exception/403' component={E403} />
                     <Route path='/exception/404' component={E404} />
                     <Route path='/exception/500' component={E500} />
-                    <Redirect to="/home" />
+                    <Redirect to="/user" />
                 </Switch>
             </Admin>
             )

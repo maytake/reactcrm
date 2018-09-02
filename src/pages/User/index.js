@@ -1,19 +1,20 @@
 import React from 'react';
-import { Route,Switch } from 'react-router-dom';
+import { Card } from 'antd';
+import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
-import King from '../King';
 
 class User extends React.Component {
     render() {
         return (
-            <div>
-             
-              <div>User</div>
-            
-               <Switch>
-                <Route path="/king" exact component={King} />
-              </Switch>
-            </div>
+            <PageHeaderLayout
+                title="更新公告"
+                content="表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。"
+            >
+                <Card bordered={false}>
+
+                    {'user首页'}
+                </Card>
+            </PageHeaderLayout>
         )
     }
 

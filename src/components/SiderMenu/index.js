@@ -17,29 +17,30 @@ const SubMenu = Menu.SubMenu;
 )
 
 class SiderMenu extends React.Component {
-
-    renderMenu = (data) => {
+    state={
+        menuTreeNode:[] 
+    }
+    renderMenu = (data,j) => {
+        let _this=this; 
         return data.map(function (item) {
             return (
-                item.children ?
+                item.children && item.children.length!=0?
                     <SubMenu key={item.path} title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}>
-                       {/*  { this.renderMenu(item.children)} */}
-                    </SubMenu> :
-                    <Menu.Item key={item.path}><Icon type={item.icon} /><Link to={'/' + item.path}>{item.name}</Link></Menu.Item>
+                        { _this.renderMenu(item.children,'child')}
+                    </SubMenu> 
+                    :j==='child'?<Menu.Item key={item.path}><Link to={'/' + item.path}>{item.name}</Link></Menu.Item>
+                    :<Menu.Item key={item.path}><Icon type={item.icon} /><Link to={'/' + item.path}>{item.name}</Link></Menu.Item>
+                    
             )
         })
     }
-
+   
     render() {
         const { collapsed, menuData } = this.props;
         if (!menuData) {
             return false;
         };
-        const menuTreeNode = this.renderMenu(menuData);
-
-        this.setState({
-            menuTreeNode
-        })
+        
         return (
             <Sider
                 trigger={null}
@@ -63,7 +64,7 @@ class SiderMenu extends React.Component {
                     theme="dark"
                     inlineCollapsed={this.props.collapsed}
                 >
-                   {/*  { this.state.menuTreeNode} */}
+                    { this.renderMenu(menuData)}
                 </Menu>
             </Sider>
 
