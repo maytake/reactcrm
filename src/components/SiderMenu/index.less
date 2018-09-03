@@ -57,15 +57,22 @@
       > .ant-menu-item
       .sider-menu-item-img
       + span,
-    & > .ant-menu-submenu > .ant-menu-submenu-title .sider-menu-item-img + span {
+    & > .ant-menu-submenu > .ant-menu-submenu-title .sider-menu-item-img + span,
+    & > .ant-menu-item .anticon + a
+    {
       max-width: 0;
       display: inline-block;
       opacity: 0;
     }
   }
   .ant-menu-item .sider-menu-item-img + span,
-  .ant-menu-submenu-title .sider-menu-item-img + span {
+  .ant-menu-submenu-title .sider-menu-item-img + span{
     transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
     opacity: 1;
   }
+  .ant-menu-item > a{
+    display: inline-block;
+  }
+
+ 
 }
