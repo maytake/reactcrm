@@ -17,21 +17,22 @@ const SubMenu = Menu.SubMenu;
 )
 
 class SiderMenu extends React.Component {
-    state={
-        menuTreeNode:[] 
-    }
+
     renderMenu = (data,j) => {
-        let _this=this; 
+        let _this=this;
         return data.map(function (item) {
-            return (
-                item.children && item.children.length!=0?
-                    <SubMenu key={item.path} title={<span><Icon type={item.icon} /><span>{item.name}</span></span>}>
-                        { _this.renderMenu(item.children,'child')}
-                    </SubMenu> 
-                    :j==='child'?<Menu.Item key={item.path}><Link to={'/' + item.path}>{item.name}</Link></Menu.Item>
-                    :<Menu.Item key={item.path}><Icon type={item.icon} /><Link to={'/' + item.path}>{item.name}</Link></Menu.Item>
-                    
-            )
+
+             return (
+                item.children&&item.children.length!=0 ? 
+                <SubMenu key={item.path} title={<span>{j==='child'?'':<Icon type={item.icon} />}<span>{item.name}</span></span>}>
+                    { _this.renderMenu(item.children, 'child')}
+                </SubMenu>
+                :<Menu.Item key={item.path}>{j==='child'?'':<Icon type={item.icon} />}<Link to={'/' + item.path}>{item.name}</Link></Menu.Item>      
+             )  
+
+                
+
+            
         })
     }
    
@@ -40,7 +41,8 @@ class SiderMenu extends React.Component {
         if (!menuData) {
             return false;
         };
-        
+  
+     
         return (
             <Sider
                 trigger={null}
