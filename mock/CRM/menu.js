@@ -5,10 +5,9 @@ module.exports = {
   "resultData": {
     "menuData": [
       {
-        name: '系统管理',
-        icon: 'user',
+        name: 'dashboard',
+        icon: 'dashboard',
         path: 'dashboard',
-
         children: [
           {
             name: '分析页',
@@ -17,7 +16,6 @@ module.exports = {
           {
             name: '监控页',
             path: 'monitor',
-            authority: 'admin',
           },
           {
             name: '工作台',
@@ -25,164 +23,79 @@ module.exports = {
             // hideInBreadcrumb: true,
             // hideInMenu: true,
           },
-          {
-            name: '测试页',
-            path: 'test',
-          }
         ],
       },
       {
-        name: '基础数据',
+        name: '表单页',
         icon: 'form',
         path: 'form',
-        authority: 'admin',
         children: [
           {
-            name: '分析页',
-            path: 'aa',
+            name: '基础表单',
+            path: 'basic-form',
           },
           {
-            name: '监控页',
-            path: 'ba',
-           
+            name: '分步表单',
+            path: 'step-form',
           },
           {
-            name: '总控制',
-            icon: 'form',
-            path: 'ca',
+            name: '高级表单',
             authority: 'admin',
-            children: [
-              {
-                name: '分析页',
-                path: 'da',
-              },
-              {
-                name: '监控页',
-                path: 'ea',
-             
-              },
-             
-            ],
-
+            path: 'advanced-form',
           },
         ],
       },
       {
-        name: '组织管理',
+        name: '列表页',
         icon: 'table',
         path: 'list',
         children: [
-
+          {
+            name: '查询表格',
+            path: 'table-list',
+          },
+          {
+            name: '标准列表',
+            path: 'basic-list',
+          },
+          {
+            name: '卡片列表',
+            path: 'card-list',
+          },
+          {
+            name: '搜索列表',
+            path: 'search',
+            children: [
+              {
+                name: '搜索列表（文章）',
+                path: 'articles',
+              },
+              {
+                name: '搜索列表（项目）',
+                path: 'projects',
+              },
+              {
+                name: '搜索列表（应用）',
+                path: 'applications',
+              },
+            ],
+          },
         ],
       },
       {
-        name: '规则管理',
-        icon: 'appstore-o',
+        name: '详情页',
+        icon: 'profile',
         path: 'profile',
         children: [
-
-        ],
-      },
-      {
-        name: '会员管理',
-        icon: 'user',
-        path: 'a',
-        children: [
-
-        ],
-      },
-      {
-        name: '积分管理',
-        icon: 'file-markdown',
-        path: 'b',
-        children: [
-
-        ],
-      },
-      {
-        name: '服务管理',
-        icon: 'file-word',
-        path: 'c',
-        children: [
-
-        ],
-      }, {
-        name: '业务管理',
-        icon: 'desktop',
-        path: 'd',
-        children: [
-
-        ],
-      }, {
-        name: '套餐管理',
-        icon: 'file-text',
-        path: 'e',
-        children: [
-
-        ],
-      }, {
-        name: '消费管理',
-        icon: 'laptop',
-        path: 'f',
-        children: [
-
-        ],
-      }, {
-        name: '伙伴管理',
-        icon: 'team',
-        path: 'g',
-        children: [
-
-        ],
-      }, {
-        name: '售后管理',
-        icon: 'gift',
-        path: 'h',
-        children: [
-
-        ],
-      }, {
-        name: '等级管理',
-        icon: 'profile',
-        path: 'i',
-        children: [
-
-        ],
-      },
-      {
-        name: '任务管理',
-        icon: 'profile',
-        path: 'j',
-        children: [
-
-        ],
-      }, {
-        name: '活动管理',
-        icon: 'profile',
-        path: 'k',
-        children: [
-
-        ],
-      }, {
-        name: 'App管理',
-        icon: 'profile',
-        path: 'l',
-        children: [
-
-        ],
-      }, {
-        name: '工单管理',
-        icon: 'profile',
-        path: 'm',
-        children: [
-
-        ],
-      }, {
-        name: '沟通管理',
-        icon: 'profile',
-        path: 'n',
-        children: [
-
+          {
+            name: '基础详情页',
+            path: 'basic',
+          },
+          {
+            name: '高级详情页',
+            path: 'advanced',
+            authority: 'admin',
+          },
         ],
       },
       {
@@ -245,5 +158,6 @@ module.exports = {
         ],
       },
     ]
+    
   }
 }

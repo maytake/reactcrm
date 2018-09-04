@@ -28,7 +28,7 @@ function errorMsg(msg){
 export function saveCurrentUser(data){
 	return dispatch=>{
 		getCurrentUser().then(res=>{
-				if (res.status==200&&res.resultCode===0) {
+				if (res.status===200&&res.resultCode===0) {
 					dispatch(actCurrentUser(res.resultData))
 				}else{
 					dispatch(errorMsg(res.data.msg))

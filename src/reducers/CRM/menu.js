@@ -28,7 +28,7 @@ function errorMsg(msg){
 export function getMenuData(data){
 	return dispatch=>{
 		getMenu().then(res=>{
-				if (res.status==200&&res.resultCode===0) {
+				if (res.status===200&&res.resultCode===0) {
 					dispatch(actMenu(res.resultData))
 				}else{
 					dispatch(errorMsg(res.data.msg))
