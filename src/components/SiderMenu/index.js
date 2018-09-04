@@ -4,7 +4,7 @@ import styles from './index.less';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { connect } from 'react-redux';
-
+import { getMenu } from '../../common/menu';
 
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -17,7 +17,13 @@ const SubMenu = Menu.SubMenu;
 )
 
 class SiderMenu extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.renderMenu = this.renderMenu.bind(this);
+    }
+componentDidMount(){
+    console.log(getMenu())
+}
     renderMenu = (data,j) => {
         let _this=this;
         return data.map(function (item) {
@@ -29,19 +35,16 @@ class SiderMenu extends React.Component {
                 </SubMenu>
                 :<Menu.Item key={item.path}>{j==='child'?'':<Icon type={item.icon} />}<Link to={'/' + item.path}>{item.name}</Link></Menu.Item>      
              )  
-
-                
-
-            
+ 
         })
     }
-
+    
     render() {
         const { collapsed, menuData } = this.props;
         if (!menuData) {
             return false;
         };
-  
+        
      
         return (
             <Sider
@@ -52,7 +55,6 @@ class SiderMenu extends React.Component {
                 width={256}
                 className={styles.sider}
             >
-
                 <div className={styles.logo} key="logo">
                     <Link to="/">
                         <img src={logo} alt="logo" />
