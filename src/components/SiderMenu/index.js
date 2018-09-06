@@ -1,28 +1,23 @@
 import React from 'react'
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import styles from './index.less';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { connect } from 'react-redux';
-import { getMenu } from '../../common/menu';
+
 
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 @connect(
     state => ({
-        collapsed: state.reducerCollapsed.collapsed
+        collapsed: state.reducerGlobal.collapsed
       
     })
 )
 
 class SiderMenu extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    state={
-        menuData:[]
-    }
+
 
     renderMenu = (data,j) => {
         
@@ -39,16 +34,10 @@ class SiderMenu extends React.Component {
  
         })
     }
-    componentDidMount(){
-        getMenu().then(res=>{
-            this.setState({
-                menuData:res
-            })
-        });
-    }
+
     render() {
         
-        const { collapsed} = this.props;
+        const { collapsed,menuData} = this.props;
 
         return (
             <Sider
@@ -72,7 +61,7 @@ class SiderMenu extends React.Component {
                     theme="dark"
                     inlineCollapsed={this.props.collapsed}
                 >
-                    { this.renderMenu(this.state.menuData)}
+                    { this.renderMenu(menuData)}
                 </Menu>
             </Sider>
 

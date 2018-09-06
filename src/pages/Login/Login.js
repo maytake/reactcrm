@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
           submitting:false
         });
         if(data.resultCode===0){
-          localStorage.setItem(USER_TOKEN,data.resultData)
+          localStorage.setItem(USER_TOKEN,data.resultData.token)
           this.props.history.push('/user');
         }else{
           this.setState({

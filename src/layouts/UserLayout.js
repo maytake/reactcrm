@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
-import {Link, Route,Switch } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
 import Login from '../pages/Login/Login'
 import styles from './UserLayout.less';
 import logo from '../assets/logo.png';
-import { getPageQuery, getQueryPath } from '../utils/utils';
 
 const links = [
   {
@@ -32,13 +31,7 @@ const copyright = (
   </Fragment>
 );
 
-function getLoginPathWithRedirectPath() {
-  const params = getPageQuery();
-  const { redirect } = params;
-  return getQueryPath('/user/login', {
-    redirect,
-  });
-}
+
 
 class UserLayout extends React.PureComponent {
 

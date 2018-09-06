@@ -1,6 +1,5 @@
 
 import { notification } from 'antd';
-import {withRouter} from 'react-router-dom';
 import createHistory from "history/createBrowserHistory"
 const history = createHistory()
 
@@ -46,6 +45,7 @@ function checkStatus(response) {
  function request(url, options) {
   const defaultOptions = {
     credentials: 'include',
+    
   };
   const newOptions = { ...defaultOptions, ...options };
   if (
@@ -59,6 +59,10 @@ function checkStatus(response) {
         'Content-Type': 'application/json; charset=utf-8',
         ...newOptions.headers,
       };
+      newOptions.body={
+        token: localStorage.getItem('USER_TOKEN'),
+        ...newOptions.body,
+      }
       newOptions.body = JSON.stringify(newOptions.body);
     } else {
       // newOptions.body is FormData

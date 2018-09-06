@@ -6,7 +6,8 @@ import {withRouter} from 'react-router-dom';
 import SiderMenu from 'components/SiderMenu';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'ant-design-pro/lib/GlobalFooter';
-import {saveCurrentUser} from '../reducers/CRM/user';
+import { getBreadCrumb } from '../reducers/CRM/global';
+import {saveCurrentUser, } from '../reducers/CRM/user';
 import { getMenu } from '../common/menu';
 
 
@@ -48,7 +49,7 @@ const getBreadcrumbNameMap = (menuData, routerData={}) => {
 @connect(state => ({
     currentUser:state.reducerCurrentUser.currentUser,
   }),
-  {saveCurrentUser}
+  {saveCurrentUser,getBreadCrumb}
 )
 class Admin extends React.Component{
     static childContextTypes = {
@@ -61,7 +62,7 @@ class Admin extends React.Component{
       };
     
       getChildContext() {
-        const { location, routerData } = this.props;
+        const { location } = this.props;
         let menuD ={};
         menuD = {
             '/user':{
@@ -86,13 +87,16 @@ class Admin extends React.Component{
         //console.log(getBreadcrumbNameMap(this.state.menuData))
         return {
           location,
-          breadcrumbNameMap: menuD,
+          breadcrumbNameMap: getBreadcrumbNameMap(this.state.menuData),
         };
       }
  
       
     componentDidMount() {
+        
         getMenu().then(res=>{
+            let data =getBreadcrumbNameMap(res);
+            this.props.getBreadCrumb(data);
             this.setState({
                 menuData:res
             })
@@ -110,7 +114,7 @@ class Admin extends React.Component{
        
         return (
             <Layout>
-                <SiderMenu/>
+                <SiderMenu menuData={this.state.menuData}/>
                 <Layout>
                     <Header style={{ padding: 0 }}>
                         <GlobalHeader/>

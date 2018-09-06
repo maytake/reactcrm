@@ -5,9 +5,9 @@ module.exports = {
   "resultData": {
     "menuData": [
       {
-        name: 'dashboard',
+        name: '主页',
         icon: 'dashboard',
-        path: 'dashboard',
+        path: 'home',
         children: [
           {
             name: '分析页',
