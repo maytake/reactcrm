@@ -25,7 +25,7 @@ function errorMsg(msg){
 	return {type:ERROR_MSG, msg }
 }
 
-export function getMenuData(data){
+export function getMenuData(){
 	return dispatch=>{
 		getMenu().then(res=>{
 				if (res.status===200&&res.resultCode===0) {

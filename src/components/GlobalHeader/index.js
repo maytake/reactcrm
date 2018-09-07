@@ -16,6 +16,7 @@ import styles from './index.less';
 
 
 const USER_TOKEN = 'USER_TOKEN';
+
 @withRouter
 @connect(state => ({
     collapsed:state.reducerGlobal.collapsed,
